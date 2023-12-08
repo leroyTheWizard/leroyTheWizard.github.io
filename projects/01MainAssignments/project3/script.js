@@ -19,6 +19,7 @@ var itsReady = false;
 
 function preload(){
 	indexFinger = loadImage('indexFinger.png')
+	normalFont = loadFont('Montserrat-Regular.ttf')
 	// loadingGif = createImg('giphy.gif');
 }
 
@@ -62,6 +63,16 @@ function draw(){
 
 	clear();
 	background(255);
+
+	//InfoText
+	push();
+	rectMode(CENTER);
+	fill('black');
+	textAlign(CENTER, CENTER);
+	textFont(normalFont);
+	textSize(80);
+	text('self build Hand tracking prototype', width / 2, height / 2, 800);
+	pop();
 	
 	webcamW = video.width
 	webcamH = video.height
@@ -126,8 +137,5 @@ function drawLandmarks(indexArray, hue){
     strokeWeight(10);
     let x = detections[0].landmarks[8][0];
     let y = detections[0].landmarks[8][1];
-    //let z = detections[0].landmarks[8][2];
-    stroke(hue, 40, 255);
-    point(x, y);
     return([x, y])
 }
